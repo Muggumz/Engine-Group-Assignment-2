@@ -5,10 +5,15 @@ using UnityEngine.InputSystem;
 
 public class GunShoot : MonoBehaviour
 {
+    [SerializeField]
+    private InformationValues informationValues;
+
     PlayerAction inputAction;
 
     public GameObject projectile;
     public Transform projectilePos;
+
+    public int damageNumber;
 
     private void OnEnable()
     {
@@ -32,5 +37,6 @@ private void Shoot()
         Rigidbody bulletRb = Instantiate(projectile, projectilePos.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
         bulletRb.AddForce(transform.forward * 32f, ForceMode.Impulse);
         bulletRb.AddForce(transform.up * 1f, ForceMode.Impulse);
+        damageNumber = informationValues.damage._SmallDamage;
     }
 }

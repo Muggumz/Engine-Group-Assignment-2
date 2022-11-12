@@ -6,19 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
-   // public GameObject EnemyHealth;
-    public int damages = 20;
-    // public int maxHealth = 100;
-    //public int health = 0;
+    [SerializeField]
+    private InformationValues informationValues;
+    // public GameObject EnemyHealth;
+    public int damages;
 
-    //public EnemyHealthSlider healthBar;
-
-    //void Awake()
-    //{
-    //EnemyHealth.SetActive(true);
-    // health = maxHealth;
-    // healthBar.SetMaxHealth(maxHealth);
-    //}
+    private void Start()
+    {
+        damages = informationValues.damage._EnemyDamage;
+    }
 
     private void OnCollisionEnter(Collision other)
     {
