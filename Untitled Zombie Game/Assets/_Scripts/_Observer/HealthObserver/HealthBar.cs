@@ -24,6 +24,10 @@ public class HealthBar : MonoBehaviour
     
     private void OnEnable()
     {
+        health = GetComponent<Health>();
+
+        _Healthslider.maxValue = health.MaxHealth;
+        _Healthslider.value = health.StartingHealth;
         //subscribe to get noified when this health takes damage!
         health.Damaged += OnTakeDamage;
     }

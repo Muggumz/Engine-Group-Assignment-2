@@ -11,9 +11,16 @@ public class EnemyController : MonoBehaviour
     // public GameObject EnemyHealth;
     public int damages;
 
-    private void Start()
+    private void OnEnable()
     {
+        ScoreManager.instance.AddEnemy();
         damages = informationValues.damage._EnemyDamage;
+        transform.GetComponent<Rigidbody>().WakeUp();
+    }
+
+    private void OnDisable()
+    {
+        transform.GetComponent<Rigidbody>().Sleep();
     }
 
     private void OnCollisionEnter(Collision other)

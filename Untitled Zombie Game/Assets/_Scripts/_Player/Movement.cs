@@ -50,6 +50,8 @@ public class Movement : MonoBehaviour
         inputAction = new PlayerAction();
 
         inputAction.Player.ReloadScene.performed += cntxt => Reload();
+
+        inputAction.Player.Exit.performed += cntxt => Exit();
         //inputAction.Player.Damage.performed += cntxt => TakeDamage(damages);
     }
     //taking damage
@@ -62,6 +64,11 @@ public class Movement : MonoBehaviour
     public void Reload()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 
     // Update is called once per frame

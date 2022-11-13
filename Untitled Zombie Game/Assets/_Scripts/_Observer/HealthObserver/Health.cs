@@ -22,6 +22,11 @@ public class Health : MonoBehaviour
 
     public int currentHealth;
 
+    private void OnEnable()
+    {
+        currentHealth = MaxHealth;
+    }
+
     void Awake()
     {
         //MaxHealth = informationValues._maxHealth;
@@ -36,7 +41,7 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            EnemyPool.Despawn(gameObject);
         }
     }
 }

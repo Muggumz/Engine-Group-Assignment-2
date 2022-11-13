@@ -5,10 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class Bullet : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other) {
-        Destroy(gameObject);
+    private void OnEnable()
+    {
+        transform.GetComponent<Rigidbody>().WakeUp();
+    }
 
-        GameObject Gun = GameObject.FindWithTag("Gun");
+    private void OnDisable()
+    {
+        transform.GetComponent<Rigidbody>().Sleep();
+    }
+
+    private void OnCollisionEnter(Collision other) {
+        gameObject.SetActive(false);
+
+        GameObject Gun = GameObject.FindWithTag("GunHolder");
 
         GunShoot damage = Gun.GetComponentInChildren<GunShoot>();
 
@@ -21,15 +31,17 @@ public class Bullet : MonoBehaviour
             health?.TakeDamage(damage.damageNumber);
             if (health.currentHealth <= 0)
             {
+                //other.gameObject.SetActive(false);
                 ScoreManager.instance.ChangeScore(1);
+                ScoreManager.instance.DecreaseEnemy();
             }
             //other.gameObject.GetComponent<EnemyController>().OnTakeDamages(25);
             //Destroy(other.gameObject);
         }
     }
 
-    private void Update()
-    {
-        Destroy(gameObject, 3);
-    }
+    //private void Update()
+   // {
+       // Destroy(gameObject, 3);
+   // }
 }
