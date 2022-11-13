@@ -13,6 +13,8 @@ public class EnemyController : MonoBehaviour
 
     private void OnEnable()
     {
+        ScoreManager.instance.AddEnemy();
+        damages = informationValues.damage._EnemyDamage;
         transform.GetComponent<Rigidbody>().WakeUp();
     }
 
@@ -23,8 +25,8 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        damages = informationValues.damage._EnemyDamage;
-        ScoreManager.instance.AddEnemy();
+        //ScoreManager.instance.AddEnemy();
+        //damages = informationValues.damage._EnemyDamage;
     }
 
     private void OnCollisionEnter(Collision other)

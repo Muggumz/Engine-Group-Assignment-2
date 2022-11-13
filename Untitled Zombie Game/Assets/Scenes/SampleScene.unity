@@ -746,7 +746,7 @@ MonoBehaviour:
   xPos: 0
   zPos: 0
   yPos: 0
-  enemyCount: 0
+  enemyCount: 10
 --- !u!1 &603427657
 GameObject:
   m_ObjectHideFlags: 0
