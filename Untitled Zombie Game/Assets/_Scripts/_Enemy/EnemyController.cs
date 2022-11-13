@@ -24,6 +24,7 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         damages = informationValues.damage._EnemyDamage;
+        ScoreManager.instance.AddEnemy();
     }
 
     private void OnCollisionEnter(Collision other)

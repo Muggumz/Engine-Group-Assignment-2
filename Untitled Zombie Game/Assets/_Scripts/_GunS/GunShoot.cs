@@ -12,7 +12,7 @@ public class GunShoot : MonoBehaviour
 
     public bool Switch = false;
 
-    public GameObject projectile;
+   // public GameObject projectile;
     public Transform projectilePos;
 
     public int damageNumber;
