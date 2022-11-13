@@ -23,12 +23,6 @@ public class EnemyController : MonoBehaviour
         transform.GetComponent<Rigidbody>().Sleep();
     }
 
-    private void Start()
-    {
-        //ScoreManager.instance.AddEnemy();
-        //damages = informationValues.damage._EnemyDamage;
-    }
-
     private void OnCollisionEnter(Collision other)
     {
         if (other.collider.tag == "Player")
