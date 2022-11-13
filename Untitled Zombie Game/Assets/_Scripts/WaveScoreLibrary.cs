@@ -12,6 +12,6 @@ public class WaveScoreLibrary : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        WaveText.text = DLLStuff.GetWaveCount("WaveScore.txt").ToString();
+        //WaveText.text = DLLStuff.GetWaveCount("WaveScore.txt").ToString();
     }
 }

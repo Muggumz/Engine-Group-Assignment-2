@@ -5,10 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class Bullet : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other) {
-        Destroy(gameObject);
+    private void OnEnable()
+    {
+        transform.GetComponent<Rigidbody>().WakeUp();
+    }
 
-        GameObject Gun = GameObject.FindWithTag("Gun");
+    private void OnDisable()
+    {
+        transform.GetComponent<Rigidbody>().Sleep();
+    }
+
+    private void OnCollisionEnter(Collision other) {
+        gameObject.SetActive(false);
+
+        GameObject Gun = GameObject.FindWithTag("GunHolder");
 
         GunShoot damage = Gun.GetComponentInChildren<GunShoot>();
 
@@ -28,8 +38,8 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        Destroy(gameObject, 3);
-    }
+    //private void Update()
+   // {
+       // Destroy(gameObject, 3);
+   // }
 }
