@@ -116,6 +116,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Throw",
+            "id": "fc402301-0db6-468e-be46-b29efc988b62",
+            "actions": [
+                {
+                    "name": "Throws",
+                    "type": "Button",
+                    "id": "49965dc9-88ae-4a6d-beb3-7da771f1cadb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4e2c898c-ccaa-4863-aaa5-667eb01d6608",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throws",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

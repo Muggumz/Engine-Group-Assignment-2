@@ -138,6 +138,34 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Throw"",
+            ""id"": ""fc402301-0db6-468e-be46-b29efc988b62"",
+            ""actions"": [
+                {
+                    ""name"": ""Throws"",
+                    ""type"": ""Button"",
+                    ""id"": ""49965dc9-88ae-4a6d-beb3-7da771f1cadb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4e2c898c-ccaa-4863-aaa5-667eb01d6608"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throws"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -151,6 +179,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
         m_Player_ReloadScene = m_Player.FindAction("ReloadScene", throwIfNotFound: true);
         m_Player_Damage = m_Player.FindAction("Damage", throwIfNotFound: true);
+        // Throw
+        m_Throw = asset.FindActionMap("Throw", throwIfNotFound: true);
+        m_Throw_Throws = m_Throw.FindAction("Throws", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -296,6 +327,39 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Throw
+    private readonly InputActionMap m_Throw;
+    private IThrowActions m_ThrowActionsCallbackInterface;
+    private readonly InputAction m_Throw_Throws;
+    public struct ThrowActions
+    {
+        private @PlayerAction m_Wrapper;
+        public ThrowActions(@PlayerAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Throws => m_Wrapper.m_Throw_Throws;
+        public InputActionMap Get() { return m_Wrapper.m_Throw; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ThrowActions set) { return set.Get(); }
+        public void SetCallbacks(IThrowActions instance)
+        {
+            if (m_Wrapper.m_ThrowActionsCallbackInterface != null)
+            {
+                @Throws.started -= m_Wrapper.m_ThrowActionsCallbackInterface.OnThrows;
+                @Throws.performed -= m_Wrapper.m_ThrowActionsCallbackInterface.OnThrows;
+                @Throws.canceled -= m_Wrapper.m_ThrowActionsCallbackInterface.OnThrows;
+            }
+            m_Wrapper.m_ThrowActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Throws.started += instance.OnThrows;
+                @Throws.performed += instance.OnThrows;
+                @Throws.canceled += instance.OnThrows;
+            }
+        }
+    }
+    public ThrowActions @Throw => new ThrowActions(this);
     public interface IPlayerShootActions
     {
         void OnShoot(InputAction.CallbackContext context);
@@ -306,5 +370,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         void OnDrop(InputAction.CallbackContext context);
         void OnReloadScene(InputAction.CallbackContext context);
         void OnDamage(InputAction.CallbackContext context);
+    }
+    public interface IThrowActions
+    {
+        void OnThrows(InputAction.CallbackContext context);
     }
 }

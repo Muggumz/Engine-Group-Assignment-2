@@ -1280,6 +1280,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 088fe8e7c7606544cb8d82aee8dbc533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &838367543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838367509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ceb1ded4ff99d4989f0d669a28f610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 963194228}
+  attackPoint: {fileID: 1658382809}
+  objectToThrow: {fileID: 4199918562986821062, guid: a436ce894be461848a9ed3f0bcd478d9, type: 3}
+  totalThrows: 100
+  throwCooldown: 5
+  throwForce: 20
+  throwUpwardForce: 5
 --- !u!1 &879040658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1805,6 +1824,37 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 6180304175192997664, guid: 05d9ff241c6eb2c459bf7f7fa1b7d14b, type: 3}
   m_PrefabInstance: {fileID: 908468163}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1658382808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1658382809}
+  m_Layer: 0
+  m_Name: Throw
+  m_TagString: GunHolder
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1658382809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658382808}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.426, y: -0.13300037, z: 0.766}
+  m_LocalScale: {x: 0.092732646, y: 0.21355994, z: 0.13084158}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1084815579}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1676422742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1905,6 +1955,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4135013735270702856, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 590160505}
+    - targetCorrespondingSourceObject: {fileID: 4135013735270702856, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1658382809}
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
 --- !u!1 &1779017241
 GameObject:
