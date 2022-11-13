@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class PrefabEnemies : MonoBehaviour
 {
-    public GameObject Enemy1;
-    public GameObject Enemy2;
-
-    public int xPos;
-    public int zPos;
-    public int yPos;
+    public Transform LocationPoint;
     public int enemyCount;
 
-    void Start()
+    //void Start()
+    //{
+    //    Debug.Log("Starting Summon");
+    //    StartCoroutine(EnemyDrop());
+    //}
+    void Awake()
     {
+        Debug.Log("Starting Summon");
         StartCoroutine(EnemyDrop());
     }
-    
     IEnumerator EnemyDrop()
     {
         while (enemyCount < 10)
         {
-            xPos = Random.Range(1, 30);
-            //yPos = Random.Range(1, 2);
-            zPos = Random.Range(1, 10);
-            Instantiate(Enemy1, new Vector3(Random.Range(1, 30), 2, Random.Range(1, 10)), Quaternion.identity);
-            Instantiate(Enemy2, new Vector3(Random.Range(1, 30), 3, Random.Range(1, 10)), Quaternion.identity);
+            Debug.Log("Starting!!");
+            //GameObject Enemy1 = ObjectPooler.instance.Enemys("Enemy1", new Vector3(Random.Range(1, 30), 2, Random.Range(1, 10)), Quaternion.identity);
+            //Enemy1 = ObjectPooler.instance.GetEnemyFromPool("Enemy1");
+            //Enemy1.transform.position = new Vector3(Random.Range(1, 30), 2, Random.Range(1, 10));
+            Debug.Log("Spawning One Enemy");
+            Rigidbody Enemy = ObjectPooler.instance.SpawnFromPool("Enemy1", LocationPoint.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            //Enemy.transform.position = new Vector3(Random.Range(1, 30), 2, Random.Range(1, 10));
+            //new Vector3(Random.Range(1, 30), 2, Random.Range(1, 10))
+            Debug.Log("Spawn Enemy");
+           // GameObject Enemy2 = ObjectPooler.instance.Enemys2("Enemy2", new Vector3(Random.Range(1, 30), 2, Random.Range(1, 10)), Quaternion.identity);
+            //Instantiate(Enemy1, new Vector3(Random.Range(1, 30), 2, Random.Range(1, 10)), Quaternion.identity);
+            //Instantiate(Enemy2, new Vector3(Random.Range(1, 30), 3, Random.Range(1, 10)), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 2;
         }

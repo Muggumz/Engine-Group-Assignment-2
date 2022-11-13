@@ -31,6 +31,7 @@ public class Bullet : MonoBehaviour
             health?.TakeDamage(damage.damageNumber);
             if (health.currentHealth <= 0)
             {
+                other.gameObject.SetActive(false);
                 ScoreManager.instance.ChangeScore(1);
             }
             //other.gameObject.GetComponent<EnemyController>().OnTakeDamages(25);
